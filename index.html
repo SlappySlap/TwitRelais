@@ -22,12 +22,14 @@
 <script>
     var socket = io.connect('http://localhost:8080');
 
-    // On affiche une boîte de dialogue quand le serveur nous envoie un "message"
+    var track = prompt('Tracking keyword ?');
+
+    socket.emit('track', track);
+
     socket.on('tweet', function(message) {
+        console.log(message);
         $('#div').append(message.text + "<br>");
     });
-
-
 </script>
 </body>
 </html>
